@@ -7,12 +7,9 @@ import {
   faYoutubeSquare,
 } from '@fortawesome/free-brands-svg-icons';
 
-import { contactUrl as contactUrlConfig } from './configuration';
 import config from './config';
 
 export const pvalThreshold = 4.94e-322;
-
-export const contactUrl = contactUrlConfig;
 
 export const naLabel = 'N/A';
 
@@ -46,7 +43,7 @@ export const mainMenuItems = [
   // Contact
   {
     name: 'Contact us',
-    url: `mailto:helpdesk@opentargets.org`,
+    url: `mailto:${config.helpdeskEmail}`,
     external: true,
   },
 ];
@@ -69,7 +66,7 @@ export const externalLinks = {
   network: [
     { label: 'Science', url: 'https://www.opentargets.org/science' },
     { label: 'Publications', url: 'https://www.opentargets.org/publications' },
-    { label: 'Platform', url: 'https://platform.opentargets.org/' },
+    { label: 'Platform', url: `${config.platformUrl}` },
     { label: 'Jobs', url: 'https://www.opentargets.org/jobs' },
     { label: 'Blog', url: 'https://blog.opentargets.org' },
   ],
@@ -94,9 +91,9 @@ export const externalLinks = {
       external: true,
     },
     {
-      label: 'helpdesk@opentargets.org',
+      label: 'Contact',
       icon: faEnvelope,
-      url: `mailto:helpdesk@opentargets.org`,
+      url: `mailto:${config.helpdeskEmail}`,
       external: true,
     },
   ],
