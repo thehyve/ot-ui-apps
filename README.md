@@ -74,6 +74,24 @@ yarn build:docs
 
 Component and package documentation is published to GitHub Pages via the `docs.yaml` workflow. It covers UI component stories, package APIs, architecture, AOTF integration, and more.
 
+## Building and using a Docker image
+
+A Docker image hosting either the Open Targets Platform or Open Targets Genetics web application can be built using the following command:
+
+```sh
+docker build --tag {name:tag} --build-arg app={platform,genetics}
+```
+
+The `app` variable can be set to either `platform` or `genetics`, depending on which application should be built.
+
+Once the image is built, the application can be hosted as such:
+
+```sh
+docker run -it --rm -p 80:80 {name:tag}
+```
+
+The application is then locally accessible in the browser at: <http://localhost:80>
+
 ## Copyright
 
 Copyright 2014-2024 EMBL - European Bioinformatics Institute, Genentech, GSK, MSD, Pfizer, Sanofi and Wellcome Sanger Institute
