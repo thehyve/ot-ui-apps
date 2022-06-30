@@ -21,7 +21,25 @@ From the root directory run: `yarn build`. This will generate on each applicatio
 
 As same as development, you can run `yarn build:platform` or `yarn build:genetics` to scope the build only for one of the applications.
 
-## Copyright 
+## Building and using a Docker image
+
+A Docker image hosting either the Open Targets Platform or Open Targets Genetics web application can be built using the following command:
+
+```sh
+docker build --tag {name:tag} --build-arg app={platform,genetics}
+```
+
+The `app` variable can be set to either `platform` or `genetics`, depending on which application should be built.
+
+Once the image is built, the application can be hosted as such:
+
+```sh
+docker run -it --rm -p 80:80 {name:tag}
+```
+
+The application is then locally accessible in the browser at: <http://localhost:80>
+
+## Copyright
 
 Copyright 2014-2018 Biogen, Celgene Corporation, EMBL - European Bioinformatics Institute, GlaxoSmithKline, Takeda Pharmaceutical Company and Wellcome Sanger Institute
 
