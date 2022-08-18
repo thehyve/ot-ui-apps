@@ -12,6 +12,8 @@ import Link from './Link';
 import OpenTargetsTitle from './OpenTargetsTitle';
 import HeaderMenu from './HeaderMenu';
 import PrivateWrapper from './PrivateWrapper';
+import config from '../config';
+import TopBar from './TopBar';
 
 const styles = theme => ({
   navbar: {
@@ -91,6 +93,7 @@ const NavBar = ({
       color="primary"
       elevation={0}
     >
+      {config.showTopBar && <TopBar />}
       <Toolbar variant="dense">
         {homepage ? null : (
           <Button component={ReactRouterLink} to="/" color="inherit">
