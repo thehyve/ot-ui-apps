@@ -24,7 +24,6 @@ import NavBar from '../../components/NavBar';
 import Search from '../../components/Search';
 import searchExamples from './searchExamples';
 import Splash from './Splash';
-import TopBar from '../../components/TopBar';
 import Version from './Version';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -128,7 +127,6 @@ const HomePage = () => {
         <meta name="description" content={appDescription} />
         <link rel="canonical" href={appCanonicalUrl} />
       </Helmet>
-      {config.showTopBar && <TopBar />}
       <Grid
         container
         justifyContent="center"

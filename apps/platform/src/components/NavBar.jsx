@@ -13,6 +13,7 @@ import OpenTargetsTitle from './OpenTargetsTitle';
 import HeaderMenu from './HeaderMenu';
 import PrivateWrapper from './PrivateWrapper';
 import config from '../config';
+import TopBar from './TopBar';
 
 const styles = theme => ({
   navbar: {
@@ -68,7 +69,14 @@ const MenuExternalLink = ({ classes, href, children }) => (
   </Typography>
 );
 
-const NavBar = ({
+const NavBar = props => (
+  <>
+    {config.showTopBar && <TopBar />}
+    <NavBarContent {...props} />
+  </>
+)
+
+const NavBarContent = ({
   classes,
   name,
   search,
