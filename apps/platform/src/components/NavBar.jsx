@@ -13,7 +13,7 @@ import OpenTargetsTitle from './OpenTargetsTitle';
 import HeaderMenu from './HeaderMenu';
 import PrivateWrapper from './PrivateWrapper';
 import config from '../config';
-import TopBar from './TopBar';
+import { TopBar } from 'ui';
 
 const styles = theme => ({
   navbar: {
