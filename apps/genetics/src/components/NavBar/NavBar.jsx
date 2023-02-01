@@ -75,6 +75,10 @@ const MenuExternalLink = ({ classes, href, children }) => (
 
 const NavBar = props => (
   <>
+    {/*
+      * Outside of the NavBar AppBar to mirror
+      * apps/platform/src/components/NavBar.jsx.
+      */}
     {config.showTopBar && <TopBar />}
     <NavBarContent {...props} />
   </>

@@ -71,6 +71,18 @@ const MenuExternalLink = ({ classes, href, children }) => (
 
 const NavBar = props => (
   <>
+    {/*
+      * Keep the TopBar outside of the NavBar's AppBar component, as nesting it
+      * renders the top bar behind the ProtVista protein structure viewer when
+      * scrolling down the target profile page. That's probably because the
+      * NavBar's AppBar has its own z-index lower than 40001, which creates a
+      * local stacking context outside of which the z-indices of descendants
+      * are not compared.
+      *
+      * This still leaves the issue that the bar also overlays the 3d structure
+      * viewer when it's expanded to fill the viewport, blocking some of the
+      * buttons of the viewer.
+      */}
     {config.showTopBar && <TopBar />}
     <NavBarContent {...props} />
   </>

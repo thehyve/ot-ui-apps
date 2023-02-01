@@ -3,6 +3,11 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 
+/**
+ * Shadows the AppBar to hint at content scrolling up.
+ *
+ * @see {@link https://mui.com/material-ui/react-app-bar/#elevate-app-bar}
+ */
 function ElevationScroll({children}) {
   const trigger = useScrollTrigger({
     disableHysteresis: true,
