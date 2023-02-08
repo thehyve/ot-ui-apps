@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import AppBar from '@material-ui/core/AppBar';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
+import { Typography } from '@material-ui/core';
+
 
 /**
  * Shadows the AppBar to hint at content scrolling up.
@@ -19,6 +21,31 @@ function ElevationScroll({children}) {
 }
 
 export default function TopBar() {
+  const [username, setUsername] = useState('');
+  useEffect(() => {
+    let isCurrent = true;
+
+    async function displayLoggedInUser() {
+      const userFunction = window.getLoggedInUser || (() => Promise.resolve(''));
+      const username = await resolveWithNameOrErrorMessage(userFunction());
+      if (isCurrent) {
+        setUsername(username)
+      }
+    }
+    async function resolveWithNameOrErrorMessage(userPromise) {
+      try {
+        return await userPromise;
+      } catch {
+        return 'Unidentified user';
+      }
+    }
+    displayLoggedInUser();
+
+    return () => {
+      isCurrent = false;
+    };
+  }, []);
+
   return (
     <ElevationScroll>
       <AppBar
@@ -43,13 +70,8 @@ export default function TopBar() {
             height: '40px',
           }}
         />
-        {/* TODO: enable this part through configuration?
-                  not all deployments use the top bar _and_ Keycloak
-                  however, this will be invisible if no user info available
-        */}
-        <span
-          id="ot-org-username"
-          title="Logged in user"
+        <Typography
+          title="Logged-in user"
           style={{
             float: 'right',
             marginRight: '20px',
@@ -59,8 +81,8 @@ export default function TopBar() {
             fontStyle: 'italic',
           }}
         >
-          &nbsp;
-        </span>
+          {username}
+        </Typography>
       </AppBar>
     </ElevationScroll>
   );
