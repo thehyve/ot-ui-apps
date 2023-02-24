@@ -11,6 +11,7 @@ const config = {
   downloadsURL: window.configDownloadsURL ?? '/data/downloads.json',
   geneticsPortalUrl:
     window.configGeneticsPortalUrl ?? 'https://genetics.opentargets.org',
+  showTopBar: window.configShowTopBar ?? false,
 };
 
 export default config;
