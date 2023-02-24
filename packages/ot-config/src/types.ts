@@ -7,6 +7,7 @@ export interface Config {
   downloadsURL: string;
   geneticsPortalUrl: string;
   gitVersion: string;
+  showTopBar: boolean;
 }
 
 export type Environment = "development" | "production";

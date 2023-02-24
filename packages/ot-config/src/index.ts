@@ -13,5 +13,6 @@ declare global {
     configDownloadsURL?: string;
     configGeneticsPortalUrl?: string;
     gitVersion?: string;
+    configShowTopBar?: boolean;
   }
 }
