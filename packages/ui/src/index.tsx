@@ -1,5 +1,6 @@
 export { default as Footer } from "./components/Footer";
 export { default as LoadingBackdrop } from "./components/LoadingBackdrop";
+export { default as TopBar } from "./components/TopBar";
 export { default as LongText } from "./components/LongText";
 export { default as OtLongText } from "./components/OtLongText";
 export { default as LongList } from "./components/LongList";

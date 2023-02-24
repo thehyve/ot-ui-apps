@@ -9,6 +9,8 @@ import Link from "./Link";
 import OpenTargetsTitle from "./OpenTargetsTitle";
 import HeaderMenu from "./HeaderMenu";
 import PrivateWrapper from "./PrivateWrapper";
+import { useConfigContext } from "../providers/ConfigurationProvider";
+import { TopBar } from "ui";
 
 const LogoBTN = styled(Button)`
   border: none;
@@ -86,7 +88,42 @@ function MenuExternalLink({ classes, href, children }) {
   );
 }
 
-function NavBar({ name, search, api, downloads, docs, contact, homepage, items, placement }) {
+function NavBar(props) {
+  const {
+    config: { showTopBar },
+  } = useConfigContext();
+  return (
+    <>
+      {/*
+       * Keep the TopBar outside of the NavBar's AppBar component, as nesting it
+       * renders the top bar behind the ProtVista protein structure viewer when
+       * scrolling down the OTP target profile page. That's probably because the
+       * NavBar's AppBar has its own z-index lower than 40001, which creates a
+       * local stacking context outside of which the z-indices of descendants
+       * are not compared.
+       *
+       * This still leaves the issue that the bar also overlays the 3d structure
+       * viewer when it's expanded to fill the viewport, blocking some of the
+       * buttons of the viewer.
+       */}
+      {showTopBar && <TopBar />}
+      <NavBarContent {...props} showTopBar={showTopBar} />
+    </>
+  );
+}
+
+function NavBarContent({
+  name,
+  search,
+  api,
+  downloads,
+  docs,
+  contact,
+  homepage,
+  items,
+  placement,
+  showTopBar,
+}) {
   const classes = useStyles();
   const theme = useTheme();
   const smMQ = useMediaQuery(theme.breakpoints.down("sm"));
@@ -100,6 +137,8 @@ function NavBar({ name, search, api, downloads, docs, contact, homepage, items, 
       color="primary"
       elevation={0}
     >
+      {/* push the content down so it isn't hidden behind the logo bar */}
+      {showTopBar && <div id="placeholder-div" style={{ height: "50px", width: "100%" }} />}
       <Toolbar variant="dense" className={classNames(classes.spaceBetween)}>
         {homepage ? null : (
           <Box
