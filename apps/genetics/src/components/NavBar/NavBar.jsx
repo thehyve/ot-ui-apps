@@ -11,6 +11,8 @@ import classNames from 'classnames';
 import Link from '../Link';
 import OpenTargetsTitle from './OpenTargetsTitle';
 import HeaderMenu from './HeaderMenu';
+import config from '../../config';
+import { TopBar } from 'ui';
 
 const styles = theme => ({
   navbar: {
@@ -88,7 +90,18 @@ const MenuExternalLink = ({ classes, href, children }) => (
   </Typography>
 );
 
-const NavBar = ({
+const NavBar = props => (
+  <>
+    {/*
+      * Outside of the NavBar AppBar to mirror
+      * apps/platform/src/components/NavBar.jsx.
+      */}
+    {config.showTopBar && <TopBar />}
+    <NavBarContent {...props} />
+  </>
+)
+
+const NavBarContent = ({
   classes,
   name,
   search,
@@ -111,6 +124,9 @@ const NavBar = ({
       color="primary"
       elevation={0}
     >
+      {/* push the content down so it isn't hidden behind the logo bar */}
+      {config.showTopBar &&
+          <div id="placeholder-div" style={{ height: '50px', width: '100%' }} />}
       <Toolbar variant="dense" className={classes.spaceBetween}>
         <div className={classes.navLogo}>
           {homepage ? null : (
