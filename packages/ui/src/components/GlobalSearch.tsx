@@ -49,6 +49,8 @@ const useStyles = makeStyles((theme) => ({
     right: "10px",
   },
   modal: {
+    // leave the space that will be hidden behind the logo bar unused
+    paddingTop: window.configShowTopBar ?? false ? "50px" : "",
     "& .MuiDialog-scrollPaper": {
       alignItems: "start",
       "& .MuiDialog-paperWidthSm": {
