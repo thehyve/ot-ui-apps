@@ -11,6 +11,8 @@ const config = {
   downloadsURL: window.configDownloadsURL ?? '/data/downloads.json',
   geneticsPortalUrl:
     window.configGeneticsPortalUrl ?? 'https://genetics.opentargets.org',
+  // Used to keep the new associations headers below the top bar when scrolling
+  showTopBar: window.configShowTopBar ?? false,
 };
 
 export default config;
