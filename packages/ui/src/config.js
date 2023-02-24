@@ -9,7 +9,9 @@ const config = {
   googleTagManagerID: window.configGoogleTagManagerID ?? null,
   efoURL: window.configEFOURL ?? "/data/ontology/efo_json/diseases_efo.jsonl",
   downloadsURL: window.configDownloadsURL ?? "/data/downloads.json",
-  geneticsPortalUrl: window.configGeneticsPortalUrl ?? "https://genetics.opentargets.org",
+  geneticsPortalUrl:
+    window.configGeneticsPortalUrl ?? "https://genetics.opentargets.org",
+  showTopBar: window.configShowTopBar ?? false,
 };
 
 export default config;

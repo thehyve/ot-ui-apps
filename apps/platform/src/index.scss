@@ -131,6 +131,11 @@ code {
   z-index: 100;
 }
 
+.TAssociations .Theader.avoiding-top-bar {
+  /* Stick to the bottom of the top bar when scrolling down */
+  top: 50px;
+}
+
 .TAssociations .Theader .cols-container {
   display: flex;
 }

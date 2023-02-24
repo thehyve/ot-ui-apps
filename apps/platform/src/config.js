@@ -7,9 +7,12 @@ const config = {
   urlAiApi: window.configOTAiApi ?? ENV_AI_API_URL,
   profile: window.configProfile ?? {},
   googleTagManagerID: window.configGoogleTagManagerID ?? null,
-  efoURL: window.configEFOURL ?? "/data/ontology/efo_json/diseases_efo.jsonl",
-  downloadsURL: window.configDownloadsURL ?? "/data/downloads.json",
-  geneticsPortalUrl: window.configGeneticsPortalUrl ?? "https://genetics.opentargets.org",
+  efoURL: window.configEFOURL ?? '/data/ontology/efo_json/diseases_efo.jsonl',
+  downloadsURL: window.configDownloadsURL ?? '/data/downloads.json',
+  geneticsPortalUrl:
+    window.configGeneticsPortalUrl ?? 'https://genetics.opentargets.org',
+  // Used to keep the new associations headers below the top bar when scrolling
+  showTopBar: window.configShowTopBar ?? false,
 };
 
 export default config;
