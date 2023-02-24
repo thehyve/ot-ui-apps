@@ -9,6 +9,7 @@ export const getEnvironmentConfig = (env: Environment): Config => {
       googleTagManagerID: null,
       geneticsPortalUrl: "https://genetics.opentargets.org",
       gitVersion: "",
+      showTopBar: true,
     },
     production: {
       urlApi: "https://api.platform.opentargets.org",
@@ -17,6 +18,7 @@ export const getEnvironmentConfig = (env: Environment): Config => {
       googleTagManagerID: "GTM-XXXXX",
       geneticsPortalUrl: "https://genetics.opentargets.org",
       gitVersion: "",
+      showTopBar: true,
     },
   };
 
@@ -36,5 +38,6 @@ export const getConfig = (): Config => {
     profile: window.configProfile ?? { isPartnerPreview: false },
     googleTagManagerID: window.configGoogleTagManagerID ?? null,
     geneticsPortalUrl: window.configGeneticsPortalUrl ?? "https://genetics.opentargets.org",
+    showTopBar: window.configShowTopBar ?? false,
   };
 };
