@@ -39,6 +39,7 @@ export { default as LabelChip } from "./components/LabelChip";
 export { default as Legend } from "./components/Legend";
 export { default as Link } from "./components/Link";
 export { default as LoadingBackdrop } from "./components/LoadingBackdrop";
+export { default as TopBar } from "./components/TopBar";
 export { default as LongList } from "./components/LongList";
 export { default as LongText } from "./components/LongText";
 export { default as MouseModelAllelicComposition } from "./components/MouseModelAllelicComposition";

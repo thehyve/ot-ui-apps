@@ -7,6 +7,8 @@ import { Grid } from "@mui/material";
 import AggregationsRow from "./AggregationsRow";
 import useAotfContext from "../../hooks/useAotfContext";
 import { GridContainer } from "../layout";
+import classNames from "classnames";
+import { showTopBar } from "../../associationsUtils";
 
 const getHeaderContainerClassName = ({ id }) => {
   if (id === "1_naiming-cols_name") return "naiming-cols";
@@ -42,7 +44,12 @@ function TableHeader({ table, cols }) {
   const highLevelHeaders = table.getHeaderGroups()[0].headers;
 
   return (
-    <div className="Theader">
+    <div
+      className={classNames({
+        Theader: true,
+        "avoiding-top-bar": showTopBar,
+      })}
+    >
       <Grid container direction="row" wrap="nowrap">
         {highLevelHeaders.map(highLevelHeader => (
           <GridContainer
