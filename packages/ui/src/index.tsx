@@ -3,6 +3,7 @@ export * from "./components/Footer";
 export { default as ThemeProvider } from "./ThemeProvider/ThemeProvider";
 export { default as LoadingBackdrop } from "./components/LoadingBackdrop";
 export * from "./components/GlobalSearch/SearchContext";
+export { default as TopBar } from "./components/TopBar";
 export { default as LongText } from "./components/LongText";
 export { default as LongList } from "./components/LongList";
 export { default as SummaryContainer } from "./components/Summary/SummaryContainer";

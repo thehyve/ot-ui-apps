@@ -131,6 +131,11 @@ code {
   z-index: 100;
 }
 
+.TAssociations .Theader.avoiding-top-bar {
+  /* Stick to the bottom of the top bar when scrolling down */
+  top: 50px;
+}
+
 .TAssociations .Theader .cols-container {
   display: flex;
 }
@@ -363,6 +368,12 @@ code {
     & .data-empty {
       height: 22px !important;
       width: 22px !important;
+    }
+
+    .Theader.avoiding-top-bar {
+      /* Don't move out of the way of the top bar in this overflow scroll;
+         the header is not at the top of the page. */
+      top: 0px;
     }
   }
 }

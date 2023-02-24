@@ -10,6 +10,8 @@ import classNames from "classnames";
 import Link from "../Link";
 import OpenTargetsTitle from "./OpenTargetsTitle";
 import HeaderMenu from "./HeaderMenu";
+import config from "../../config";
+import { TopBar } from "ui";
 
 const useStyles = makeStyles(theme => ({
   navbar: {
@@ -101,7 +103,18 @@ type NavBarProps = {
   homepage: boolean;
   placement?: PopperProps["placement"];
 };
-const NavBar = ({
+const NavBar = (props: NavBarProps) => (
+  <>
+    {/*
+     * Outside of the NavBar AppBar to mirror the platform version in
+     * packages/ui/src/components/NavBar.jsx
+     */}
+    {config.showTopBar && <TopBar />}
+    <NavBarContent {...props} />
+  </>
+);
+
+const NavBarContent = ({
   name,
   search,
   api,
@@ -124,6 +137,10 @@ const NavBar = ({
       color="primary"
       elevation={0}
     >
+      {/* push the content down so it isn't hidden behind the logo bar */}
+      {config.showTopBar && (
+        <div id="placeholder-div" style={{ height: '50px', width: '100%' }} />
+      )}
       <Toolbar variant="dense" className={classes.spaceBetween}>
         <div className={classes.navLogo}>
           {homepage ? null : (
