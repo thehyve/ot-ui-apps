@@ -6,7 +6,7 @@ const config = {
   platformUrl: window.configPlatformUrl
     ? window.configPlatformUrl.replace(/\/$/, '')
     : 'https://platform.opentargets.org',
-  showTopBar: window.configShowTopBar ?? false,
+  showTopBar: window.configShowTopBar ?? true,
 };
 
 export default config;
