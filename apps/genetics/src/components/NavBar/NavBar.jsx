@@ -119,12 +119,6 @@ const NavBarContent = ({
           )}
         </div>
         <div className={classes.navSearch}>{search ? search : null}</div>
-        <div className={classes.navMenu}>
-          {docs ? (
-            <MenuExternalLink classes={classes} href={docs}>
-              Docs
-            </MenuExternalLink>
-          ) : null}
 
         {docs ? (
           <MenuExternalLink classes={classes} href={docs}>
