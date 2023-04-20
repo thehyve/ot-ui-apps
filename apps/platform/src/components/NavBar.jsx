@@ -11,6 +11,9 @@ import classNames from 'classnames';
 import Link from './Link';
 import OpenTargetsTitle from './OpenTargetsTitle';
 import HeaderMenu from './HeaderMenu';
+import PrivateWrapper from './PrivateWrapper';
+import config from '../config';
+import { TopBar } from 'ui';
 
 const styles = theme => ({
   navbar: {
@@ -51,6 +54,23 @@ const styles = theme => ({
       color: theme.palette.secondary.contrastText,
     },
   },
+  spaceBetween: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  navLogo: {
+    flex: 1,
+  },
+  navSearch: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  navMenu: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'end',
+  },
 });
 
 const MenuExternalLink = ({ classes, href, children }) => (
@@ -66,7 +86,26 @@ const MenuExternalLink = ({ classes, href, children }) => (
   </Typography>
 );
 
-const NavBar = ({
+const NavBar = props => (
+  <>
+    {/*
+      * Keep the TopBar outside of the NavBar's AppBar component, as nesting it
+      * renders the top bar behind the ProtVista protein structure viewer when
+      * scrolling down the target profile page. That's probably because the
+      * NavBar's AppBar has its own z-index lower than 40001, which creates a
+      * local stacking context outside of which the z-indices of descendants
+      * are not compared.
+      *
+      * This still leaves the issue that the bar also overlays the 3d structure
+      * viewer when it's expanded to fill the viewport, blocking some of the
+      * buttons of the viewer.
+      */}
+    {config.showTopBar && <TopBar />}
+    <NavBarContent {...props} />
+  </>
+)
+
+const NavBarContent = ({
   classes,
   name,
   search,
@@ -90,58 +129,65 @@ const NavBar = ({
       color="primary"
       elevation={0}
     >
-      <Toolbar variant="dense">
-        {homepage ? null : (
-          <Button component={ReactRouterLink} to="/" color="inherit">
-            <OpenTargetsTitle name={name} />
-          </Button>
-        )}
-        <div className={classes.flex} />
-        {search ? search : null}
+      {/* push the content down so it isn't hidden behind the logo bar */}
+      {config.showTopBar &&
+          <div id="placeholder-div" style={{ height: '50px', width: '100%' }} />}
+      <Toolbar variant="dense" className={classNames(classes.spaceBetween)}>
+        <div className={classes.navLogo}>
+          {homepage ? null : (
+            <Button component={ReactRouterLink} to="/" color="inherit">
+              <OpenTargetsTitle name={name} />
+            </Button>
+          )}
+        </div>
 
-        {docs ? (
-          <MenuExternalLink classes={classes} href={docs}>
-            Docs
-          </MenuExternalLink>
-        ) : null}
+        <div className={classes.navSearch}>{search ? search : null}</div>
 
-        {api ? (
-          <MenuExternalLink classes={classes} href={api}>
-            API
-          </MenuExternalLink>
-        ) : null}
+        <div className={classes.navMenu}>
+          {docs ? (
+            <MenuExternalLink classes={classes} href={docs}>
+              Docs
+            </MenuExternalLink>
+          ) : null}
 
-        {downloads ? (
-          <MenuExternalLink classes={classes} href={downloads}>
-            Downloads
-          </MenuExternalLink>
-        ) : null}
+          {api ? (
+            <MenuExternalLink classes={classes} href={api}>
+              API
+            </MenuExternalLink>
+          ) : null}
 
-        {contact ? (
-          <MenuExternalLink classes={classes} href={contact}>
-            Contact
-          </MenuExternalLink>
-        ) : null}
+          {downloads ? (
+            <MenuExternalLink classes={classes} href={downloads}>
+              Downloads
+            </MenuExternalLink>
+          ) : null}
 
-        {items && !isHomePageRegular ? (
-          <HeaderMenu items={items} placement={placement} />
-        ) : null}
+          {contact ? (
+            <MenuExternalLink classes={classes} href={contact}>
+              Contact
+            </MenuExternalLink>
+          ) : null}
 
-        {isHomePageRegular && (
-          <MenuList className={classes.menuList}>
-            {items.map((item, i) => (
-              <MenuItem key={i} dense={true} className={classes.menuItem}>
-                <Link
-                  external={item.external}
-                  to={item.url}
-                  className={classes.menuLink}
-                >
-                  {item.name}
-                </Link>
-              </MenuItem>
-            ))}
-          </MenuList>
-        )}
+          {items && !isHomePageRegular ? (
+            <HeaderMenu items={items} placement={placement} />
+          ) : null}
+
+          {isHomePageRegular && (
+            <MenuList className={classes.menuList}>
+              {items.map((item, i) => (
+                <MenuItem key={i} dense={true} className={classes.menuItem}>
+                  <Link
+                    external={item.external}
+                    to={item.url}
+                    className={classes.menuLink}
+                  >
+                    {item.name}
+                  </Link>
+                </MenuItem>
+              ))}
+            </MenuList>
+          )}
+        </div>
       </Toolbar>
     </AppBar>
   );
