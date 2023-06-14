@@ -9,6 +9,7 @@ const config = {
     ? window.configPlatformUrl.replace(/\/$/, '')
     : 'https://platform.opentargets.org',
   showTopBar: window.configShowTopBar ?? false,
+  matomoUrl: window.configMatomoUrl ?? 'https://localhost:9443/',
 };
 
 export default config;
