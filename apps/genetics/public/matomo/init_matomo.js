@@ -1,5 +1,3 @@
-import config from '../../src/config';
-
 var _paq = window._paq || [];
 /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
 
@@ -25,7 +23,10 @@ var _paq = window._paq || [];
 })();
 
 (function() {
-  var u = config.matomoUrl;
+  var u = 'DISABLED';
+  if (u === 'DISABLED') {
+    return
+  }
   _paq.push(['setTrackerUrl', u + 'matomo.php']);
   _paq.push(['setSiteId', '1']);
   var d = document,
