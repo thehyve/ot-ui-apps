@@ -3,7 +3,6 @@ import { ApolloProvider } from '@apollo/client';
 import { ThemeProvider, SearchProvider, PrivateRoute } from 'ui';
 
 import SEARCH_QUERY from './components/Search/SearchQuery.gql';
-import ShouldAccessPPP from './components/ShouldAccessPPP';
 import client from './client';
 import theme from './theme';
 import HomePage from './pages/HomePage';
@@ -64,7 +63,6 @@ function App() {
                 <NotFoundPage />
               </Route>
             </Switch>
-            <ShouldAccessPPP />
           </Router>
         </SearchProvider>
       </ThemeProvider>
