@@ -17,7 +17,6 @@ import VariantsPage from './pages/VariantsPage';
 import APIPage from './pages/APIPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ProjectsPage from './pages/ProjectsPage';
-import ShouldAccessPPP from './components/ShouldAccessPPP';
 
 function App() {
   return (
@@ -28,7 +27,6 @@ function App() {
           searchPlaceholder="Search for a target, drug, disease, or phenotype..."
         >
           <Router>
-            <ShouldAccessPPP />
             <Switch>
               <Route exact path="/" component={HomePage} />
               <Route path="/search" component={SearchPage} />
