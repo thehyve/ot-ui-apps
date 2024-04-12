@@ -1,4 +1,4 @@
-FROM node:12 as build
+FROM node:20.5 as build
 # assert that a compatible yarn version is installed or fail
 RUN case `yarn --version` in 1.22*) true;; *) false;; esac
 COPY package.json yarn.lock /tmp/platform-app/
@@ -8,7 +8,7 @@ COPY . /tmp/platform-app/
 ARG REACT_APP_REVISION=""
 RUN : "${REACT_APP_REVISION:?Missing --build-arg REACT_APP_REVISION=\$(git rev-parse --short HEAD)}"
 RUN yarn build
-FROM node:12
+FROM node:20.5
 RUN npm install -g serve
 COPY --from=build /tmp/platform-app/build/ /var/www/platform-app/
 WORKDIR /var/www/platform-app/
