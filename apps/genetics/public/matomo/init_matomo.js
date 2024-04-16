@@ -3,7 +3,8 @@ var _paq = window._paq || [];
 
 (function() {
   function registerUserVisit() {
-    getLoggedInUser()
+    const userFunction = window.getLoggedInUser || (() => Promise.reject());
+    userFunction()
       .then(function(user) {
         _paq.push(['setUserId', user]);
       })
