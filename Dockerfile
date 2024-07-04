@@ -1,4 +1,4 @@
-FROM node:18 as build
+FROM node:18 AS build
 # make sure app variable is set and valid
 ARG app=""
 RUN : "${app:?Missing --build-arg app}"
