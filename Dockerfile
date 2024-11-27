@@ -1,4 +1,4 @@
-FROM node:16 as build
+FROM node:16-bookworm as build
 # make sure app variable is set and valid
 ARG app=""
 RUN : "${app:?Missing --build-arg app}"
@@ -12,7 +12,7 @@ RUN yarn --network-timeout 100000
 RUN yarn build:$app
 RUN mv ./apps/$app/bundle-$app/ ./bundle/
 
-FROM node:16
+FROM node:16-bookworm
 RUN npm install --location=global serve
 COPY --from=build /tmp/app/bundle/ /var/www/app/
 WORKDIR /var/www/app/
