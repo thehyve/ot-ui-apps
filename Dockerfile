@@ -2,6 +2,7 @@ FROM node:18 AS build
 # make sure app variable is set and valid
 ARG app=""
 RUN : "${app:?Missing --build-arg app}"
+
 RUN case "$app" in platform) true;; genetics) true;; *) echo "variable 'app' must be set to either 'platform' or 'genetics'"; false;; esac
 # assert that a compatible yarn version is installed or fail
 RUN case `yarn --version` in 1.22*) true;; *) false;; esac
@@ -13,8 +14,13 @@ RUN yarn build:$app
 RUN mv ./apps/$app/bundle-$app/ ./bundle/
 
 FROM node:18
+
+ARG git_version=""
+RUN : "${git_version:?Missing --build-arg git_version=\$(git rev-parse --short HEAD)}"
+
 RUN npm install --location=global serve
 COPY --from=build /tmp/app/bundle/ /var/www/app/
 WORKDIR /var/www/app/
+RUN echo "var gitVersion = '$git_version'" >config.js
 EXPOSE 80
 CMD ["serve", "--no-clipboard", "--single", "-l", "tcp://0.0.0.0:80"]
