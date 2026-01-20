@@ -70,7 +70,7 @@ import { DataMetricsPage } from "@thehyve/data-metrics-plugin";
 ```
 
 - The component will fetch the CSV files and display the metrics dashboard.
-- Place the metrics CSV files in your public directory or ensure the URLs are accessible from the client.
+- Place the metrics CSV files in your public directory.
 
 ## Components
 
