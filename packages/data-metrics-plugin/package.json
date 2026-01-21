@@ -1,0 +1,23 @@
+{
+  "name": "@thehyve/data-metrics-plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thehyve/ot-ui-apps.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
+  },
+  "version": "1.0.0",
+  "main": "index.tsx",
+  "types": "index.tsx",
+  "dependencies": {
+    "ui": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/react": "^18.0.0",
+    "@types/classnames": "^2.3.0",
+    "@types/d3": "^7.4.0"
+  }
+}
