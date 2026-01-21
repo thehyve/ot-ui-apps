@@ -61,3 +61,6 @@ test-results/
 ./packages/platform-test/playwright-report/index.html
 packages/platform-test/playwright-report/**/index.html
 packages/platform-test/playwright-report/index.html
+
+# .npmrc
+.npmrc
