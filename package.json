@@ -15,7 +15,7 @@
     "build": "turbo run build",
     "build:no-cache": "turbo run build --parallel --no-cache",
     "dev": "turbo run dev --parallel",
-    "dev:platform": "turbo run dev --filter=platform",
+    "dev:platform": "turbo run dev --filter=platform -- --mode development",
     "build:platform": "turbo run build --filter=platform",
     "dev:platform:ppp": "turbo run dev-ppp --filter=platform",
     "build:platform:ppp": "turbo run build-ppp --filter=platform",
