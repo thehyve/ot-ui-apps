@@ -16,7 +16,7 @@
     "build:no-cache": "turbo run build --parallel --no-cache",
     "generateAPITypes": "turbo run generateAPITypes",
     "dev": "turbo run dev --parallel",
-    "dev:platform": "turbo run dev --filter=platform",
+    "dev:platform": "turbo run dev --filter=platform -- --mode development",
     "build:platform": "turbo run build --filter=platform",
     "dev:docs": "turbo run dev --filter=docs",
     "build:docs": "turbo run build --filter=docs",
