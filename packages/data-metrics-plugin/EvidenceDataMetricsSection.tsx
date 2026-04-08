@@ -4,7 +4,7 @@ import { SectionItem } from "ui";
 import DataMetricsPieChart from "./DataMetricsPieChart";
 import DataMetricsTable from "./DataMetricsTable";
 import { evidenceDefinition } from "./index";
-import { EvidenceDataMetricsSectionProps } from "./types";
+import type { EvidenceDataMetricsSectionProps } from "./types";
 
 const excludeVariables = [
   "evidenceFieldNotNullCountByDatasource",
@@ -23,6 +23,10 @@ const excludeVariables = [
   "associationsDirectByDatasourceOR",
   "associationsIndirectByDatasourceAUC",
   "associationsIndirectByDatasourceOR",
+  "associationsDirectNotNullCountByDatasource",
+  "associationsDirectDistinctFieldsCountByDatasource",
+  "associationsIndirectNotNullCountByDatasource",
+  "associationsIndirectDistinctFieldsCountByDatasource",
 ];
 
 function EvidenceDataMetricsSection({ metrics, prevMetrics }: EvidenceDataMetricsSectionProps) {

@@ -1,5 +1,5 @@
 import { Card, CardContent, Grid, Typography } from "@mui/material";
-import { DataMetricsTotalCardsProps } from "./types";
+import type { DataMetricsTotalCardsProps } from "./types";
 
 const excludeCardPatterns = [
   "Invalid",
@@ -7,6 +7,14 @@ const excludeCardPatterns = [
   "NullifiedScore",
   "UnresolvedTarget",
   "UnresolvedDisease",
+  "Unvalidated",
+  "IndirectPrimaryPurpose",
+  "PhaseIvNotApproved",
+  "NotAvailableOrEmpty",
+  "BelowTheExpectedThreshold",
+  "ByDatatypeDirect",
+  "ByDatatypeIndirect",
+  "Vector",
 ];
 
 function variableToTitle(variable: string): string {
