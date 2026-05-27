@@ -1,3 +1,12 @@
+FROM node:25 AS build
+
+# assert that a compatible yarn version is installed or fail
+RUN case `yarn --version` in 1.22*) true;; *) false;; esac
+WORKDIR /tmp/app/
+COPY . ./
+RUN yarn --network-timeout 100000
+RUN yarn build:platform
+
 FROM alpine
 
 # install nginx and brotli module
@@ -8,9 +17,9 @@ RUN addgroup -g 1001 -S nginxgroup && \
     adduser -u 1001 -D -S -G nginxgroup nginxuser
     
 # copy assets, config and entrypoint
-COPY ./bundle-platform /usr/share/nginx/html
-COPY ./etc/platform.conf /etc/nginx/http.d/platform.conf
-COPY ./etc/entrypoint.sh /entrypoint.sh
+COPY --from=build /tmp/app/apps/platform/bundle-platform /usr/share/nginx/html
+COPY ./apps/platform/etc/platform.conf /etc/nginx/http.d/platform.conf
+COPY ./apps/platform/etc/entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 # create necessary nginx folders and set permissions
