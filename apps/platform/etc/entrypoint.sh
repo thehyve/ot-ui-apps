@@ -7,6 +7,7 @@ var configOTAiApi = '${WEBAPP_OPENAI_URL:-https://ai.platform.opentargets.org}'
 var configGoogleTagManagerID = '${WEBAPP_GOOGLE_TAG_MANAGER_ID:-GTM-XXXXX}'
 var configShowTopBar = ${WEBAPP_SHOW_TOP_BAR:-false}
 configProfile['helpdeskEmail'] = '${WEBAPP_HELPDESK_EMAIL}'
+configProfile['isPartnerPreview'] = '${WEBAPP_IS_PARTNER_PREVIEW:-false}'
 EOF
 
 cat "/usr/share/nginx/html/profiles/${WEBAPP_FLAVOR:-platform}.js" >> /usr/share/nginx/html/config.js
