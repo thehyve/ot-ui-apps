@@ -26,6 +26,13 @@ function RecordsCards({
     if (maxClinicalStage === "APPROVAL" && !records.APPROVAL) {
       initStage = records.PHASE_4 ? "PHASE_4" : "WITHDRAWAL";
     }
+    // else fall back to a stage in the records object if maxClinicalStage is not present
+    if (!records[initStage]) {
+      const stages = Object.keys(records);
+      if (stages.length > 0) {
+        initStage = stages[0];
+      }
+    }
     setSelectedStage(initStage);
   }, [maxClinicalStage, records]);
 
