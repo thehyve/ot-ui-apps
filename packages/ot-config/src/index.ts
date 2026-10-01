@@ -11,5 +11,6 @@ declare global {
     configProfile?: Record<string, unknown>;
     configGoogleTagManagerID?: string;
     gitVersion?: string;
+    configShowTopBar?: boolean;
   }
 }

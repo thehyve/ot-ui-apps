@@ -9,6 +9,7 @@ export const getEnvironmentConfig = (env: Environment): Config => {
       profile: {},
       googleTagManagerID: null,
       gitVersion: "",
+      showTopBar: true,
     },
     production: {
       urlApi: "https://api.platform.opentargets.org",
@@ -17,6 +18,7 @@ export const getEnvironmentConfig = (env: Environment): Config => {
       profile: {},
       googleTagManagerID: "GTM-XXXXX",
       gitVersion: "",
+      showTopBar: true,
     },
   };
 
@@ -37,5 +39,6 @@ export const getConfig = (): Config => {
     gitVersion: window.gitVersion ?? ENV_GIT_VERSION ?? "",
     profile: window.configProfile ?? { isPartnerPreview: false },
     googleTagManagerID: window.configGoogleTagManagerID ?? null,
+    showTopBar: window.configShowTopBar ?? false,
   };
 };

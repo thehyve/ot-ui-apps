@@ -5,6 +5,7 @@ export interface Config {
   profile: Record<string, unknown>;
   googleTagManagerID: string | null;
   gitVersion: string;
+  showTopBar: boolean;
 }
 
 export type Environment = "development" | "production";

@@ -128,6 +128,8 @@ export const getControlChecked = (values: { id: string }[], id: string): boolean
 
 /* --- CONSTANTS --- */
 const { primaryColor } = config.profile;
+// Used to keep the column headers below the top bar when scrolling
+export const { showTopBar } = config;
 
 /* Associations colors */
 export const ASSOCIATION_COLORS: RGBColor[] = [
