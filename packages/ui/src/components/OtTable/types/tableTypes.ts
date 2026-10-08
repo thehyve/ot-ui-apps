@@ -31,6 +31,7 @@ export type OtTableProps = {
   query: DocumentNode;
   variables: Record<string, unknown>;
   showColumnVisibilityControl: boolean;
+  initialColumnVisibility?: Record<string, boolean>;
   loading: boolean;
   enableMultipleRowSelection: boolean;
   getSelectedRows: (r: Row<any>[]) => void;
