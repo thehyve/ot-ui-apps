@@ -153,7 +153,6 @@ function NavBarContent({
   placement,
   showTopBar,
 }: NavBarContentProps): ReactElement {
-  const classes = useStyles();
   const theme = useTheme<Theme>();
   const smMQ = useMediaQuery(theme.breakpoints.down("sm"));
   const isHomePageRegular = homepage && !smMQ;
